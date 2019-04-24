@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -50,6 +50,9 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -126,9 +129,6 @@
     <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
       <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -136,6 +136,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ContactoesController.cs" />
     <Compile Include="Controllers\CorreosController.cs" />
+    <Compile Include="Controllers\CuentasController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EstadodeCuentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -229,6 +230,82 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker.css" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker.min.css" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker3.css" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Content\Datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Content\Datepicker\js\bootstrap-datepicker.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.ar.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.az.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.bg.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.bs.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.ca.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.cs.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.cy.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.da.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.de.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.el.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.en-AU.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.en-GB.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.eo.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.es.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.et.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.eu.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.fa.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.fi.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.fo.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.fr-CH.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.fr.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.gl.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.he.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.hr.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.hu.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.hy.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.id.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.is.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.it-CH.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.it.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.ja.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.ka.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.kh.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.kk.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.ko.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.kr.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.lt.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.lv.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.me.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.mk.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.mn.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.ms.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.nb.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.nl-BE.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.nl.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.no.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.pl.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.pt-BR.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.pt.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.ro.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.rs-latin.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.rs.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.ru.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.sk.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.sl.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.sq.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.sr-latin.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.sr.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.sv.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.sw.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.th.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.tr.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.uk.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.vi.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.zh-CN.min.js" />
+    <Content Include="Content\Datepicker\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -252,6 +329,14 @@
     <Content Include="Models\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker.css.map" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker.min.css.map" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker.standalone.min.css.map" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker3.css.map" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker3.min.css.map" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="Content\Datepicker\css\bootstrap-datepicker3.standalone.min.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -263,7 +348,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -336,6 +423,11 @@
     <Content Include="Views\Correos\Details.cshtml" />
     <Content Include="Views\Correos\Edit.cshtml" />
     <Content Include="Views\Correos\Index.cshtml" />
+    <Content Include="Views\Cuentas\Create.cshtml" />
+    <Content Include="Views\Cuentas\Delete.cshtml" />
+    <Content Include="Views\Cuentas\Details.cshtml" />
+    <Content Include="Views\Cuentas\Edit.cshtml" />
+    <Content Include="Views\Cuentas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -388,7 +480,7 @@
     <PropertyGroup>
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
