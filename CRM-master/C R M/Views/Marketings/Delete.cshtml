@@ -5,48 +5,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+
 <div>
     <h4>Marketing</h4>
+    <h3>¿Está seguro que desea eliminar el registro?</h3>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.URL)
+            @Html.DisplayName("URL")
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.URL)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Empresa1.Nombre)
+            @Html.DisplayName("Empresa")
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Empresa1.Nombre)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Producto.Nombre)
+            @Html.DisplayName("Producto Comprado")
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Producto.Nombre)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Producto1.Nombre)
+            @Html.DisplayName("Producto Sugerido")
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Producto1.Nombre)
         </dd>
-
     </dl>
-
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
