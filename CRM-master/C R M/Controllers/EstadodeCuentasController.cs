@@ -15,10 +15,20 @@ namespace C_R_M.Controllers
         private CRMEntities db = new CRMEntities();
 
         // GET: EstadodeCuentas
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
+            
             var estadodeCuenta = db.EstadodeCuenta.Include(e => e.Empresa1);
-            return View(estadodeCuenta.ToList());
+            List<EstadodeCuenta> listEstado = estadodeCuenta.ToList();
+
+            foreach (var item in estadodeCuenta)
+            {
+                if (item.Empresa != id)
+                {
+                    listEstado.Remove(item);
+                }
+            }
+            return View(listEstado);
         }
 
         // GET: EstadodeCuentas/Details/5
