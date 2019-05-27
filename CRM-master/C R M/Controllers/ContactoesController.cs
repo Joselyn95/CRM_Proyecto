@@ -15,10 +15,19 @@ namespace C_R_M.Controllers
         private CRMEntities db = new CRMEntities();
 
         // GET: Contactoes
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var contacto = db.Contacto.Include(c => c.Empresa1);
-            return View(contacto.ToList());
+            List<Contacto> listContactos = contacto.ToList();
+
+            foreach (var item in contacto)
+            {
+                if (item.Empresa != id )
+                {
+                    listContactos.Remove(item);
+                }
+            }
+            return View(listContactos);
         }
 
         // GET: Contactoes/Details/5
