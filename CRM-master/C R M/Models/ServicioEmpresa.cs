@@ -11,7 +11,8 @@ namespace C_R_M.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ServicioEmpresa
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +22,20 @@ namespace C_R_M.Models
         }
     
         public int Id_Servicio_Empresa { get; set; }
+        [Required(ErrorMessage="Seleccione un Producto")]
         public int Id_Producto { get; set; }
+        [Required(ErrorMessage = "Ingrese una descripción del servicio")]
         public string Descripcion { get; set; }
+        
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Ingrese la Fecha de Creación")]
+
         public System.DateTime Fecha_Creacion { get; set; }
+
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Primer_Pago { get; set; }
+
+        [DataType(DataType.Date)]
         public System.DateTime Renovacion { get; set; }
         public int Empresa { get; set; }
         public double Precio { get; set; }
