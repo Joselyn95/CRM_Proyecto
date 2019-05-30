@@ -11,10 +11,13 @@ namespace C_R_M.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Telefono
     {
         public int Id_Telefono { get; set; }
+        [Required(ErrorMessage = "Ingrese el nombre de la empresa")]
+        [RegularExpression(@"[0-9]{1,9}(\.[0-9]{0,2})?$", ErrorMessage = "Solamente se permiten números enteros")]
         public Nullable<int> Telefono1 { get; set; }
         public Nullable<int> Contacto { get; set; }
     

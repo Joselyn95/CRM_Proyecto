@@ -6,7 +6,6 @@
 }
 
 <h2>Servicios</h2>
-
 <p>
     @Html.ActionLink("Crear Nuevo", "Create")
 </p>
@@ -16,22 +15,19 @@
             @Html.DisplayNameFor(model => model.Producto.Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            @Html.DisplayName("Descripción")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fecha_Creacion)
+            @Html.DisplayName("Fecha Creación")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Primer_Pago)
+            @Html.DisplayName("Primer Pago")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Renovacion)
+            @Html.DisplayName("Renovación")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Precio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Empresa1.Nombre)
         </th>
 
         <th></th>
@@ -56,9 +52,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Precio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empresa1.Nombre)
         </td>
 
         <td>

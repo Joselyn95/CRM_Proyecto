@@ -11,14 +11,22 @@ namespace C_R_M.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Usuario
     {
         public int Id_Usuario { get; set; }
+        [Required(ErrorMessage = "Ingrese el nombre del usuario")]
         public string Nombre { get; set; }
+
+        [Required(ErrorMessage = "Ingrese el Apellido1 del usuario")]
         public string Apellido1 { get; set; }
         public string Apellido2 { get; set; }
+
+        [Required(ErrorMessage = "Ingrese el correo del usuario")]
         public string Correo { get; set; }
+
+        [Required(ErrorMessage = "Ingrese la contraseña del usuario")]
         public string Contraseña { get; set; }
         public Nullable<System.DateTime> Fecha_Creacion { get; set; }
         public Nullable<int> Empresa { get; set; }
