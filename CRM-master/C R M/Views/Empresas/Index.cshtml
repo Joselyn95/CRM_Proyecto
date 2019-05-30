@@ -10,6 +10,7 @@
 <p>
     @Html.ActionLink("Crear Nuevo", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -19,26 +20,29 @@
             @Html.DisplayNameFor(model => model.Correo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cedula)
+            @Html.DisplayName("Cédula")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Pais)
+            @Html.DisplayName("País")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Otras_Señas)
+            @Html.DisplayName("Provincia")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Codigo_Postal)
+            @Html.DisplayName("Cantón")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Canton.Nombre)
+            @Html.DisplayName("Distrito")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Distrito.Nombre)
+            @Html.DisplayName("Otras Señas")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Provincia.Nombre)
+            @Html.DisplayName("Código Postal")
         </th>
+
+
+
         <th></th>
     </tr>
 
@@ -57,10 +61,7 @@
             @Html.DisplayFor(modelItem => item.Pais)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Otras_Señas)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Codigo_Postal)
+            @Html.DisplayFor(modelItem => item.Provincia.Nombre)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Canton.Nombre)
@@ -69,11 +70,16 @@
             @Html.DisplayFor(modelItem => item.Distrito.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Provincia.Nombre)
+            @Html.DisplayFor(modelItem => item.Otras_Señas)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id_Empresa }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.Id_Empresa }) 
+            @Html.DisplayFor(modelItem => item.Codigo_Postal)
+        </td>
+
+
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.Id_Empresa }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.Id_Empresa })
         </td>
     </tr>
 }

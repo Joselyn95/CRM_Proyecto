@@ -11,7 +11,8 @@ namespace C_R_M.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Empresa
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,14 +28,23 @@ namespace C_R_M.Models
         }
     
         public int Id_Empresa { get; set; }
+        [Required(ErrorMessage = "Ingrese el nombre de la empresa")]
         public string Nombre { get; set; }
+
+        [Required(ErrorMessage = "Ingrese el correo de la empresa")]
         public string Correo { get; set; }
+
+        [RegularExpression(@"[0-9]{1,9}(\.[0-9]{0,2})?$")]
         public string Cedula { get; set; }
+
+        [Required(ErrorMessage = "Ingrese el país de la empresa")]
         public string Pais { get; set; }
         public Nullable<int> Id_Provincia { get; set; }
         public Nullable<int> Id_Canton { get; set; }
         public Nullable<int> Id_Distrito { get; set; }
         public string Otras_Señas { get; set; }
+
+        [RegularExpression(@"[0-9]{1,9}(\.[0-9]{0,2})?$",ErrorMessage ="Solamente se permiten números enteros")]
         public int Codigo_Postal { get; set; }
     
         public virtual Canton Canton { get; set; }
