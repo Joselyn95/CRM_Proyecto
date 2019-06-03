@@ -18,7 +18,7 @@ namespace C_R_M.Controllers
         public ActionResult Index()
         {
             var contacto = db.Contacto.Include(c => c.Empresa1);
-            return View(contacto.ToList());
+            return View(contacto.ToList()/*.Where< Empresa ==Empresa1>*/);
         }
 
         // GET: Contactoes/Details/5
