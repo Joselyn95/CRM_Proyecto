@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Usuarios</h2>
 
 <p>
     @Html.ActionLink("Crear Nuevo", "Create")
@@ -28,13 +28,13 @@
             @Html.DisplayNameFor(model => model.Contraseña)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fecha_Creacion)
+            @Html.DisplayName("Fecha Creación")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Empresa1.Nombre)
+            @Html.DisplayName("Empresa")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Rol1.Nombre)
+            @Html.DisplayName("Rol")
         </th>
         <th></th>
     </tr>

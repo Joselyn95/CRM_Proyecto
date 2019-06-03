@@ -424,8 +424,8 @@
 							this.picker.is(e.target) ||
 							this.picker.find(e.target).length ||
 							this.isInline
-						)){
-							this.hide();
+                        )) {
+                            this.hide();
 						}
 					}, this)
 				}]

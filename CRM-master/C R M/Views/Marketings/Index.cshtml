@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Marketing de Productos</h2>
 
 <p>
     @Html.ActionLink("Crear Nuevo", "Create")
@@ -13,16 +13,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.URL)
+            @Html.DisplayName("URL")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Empresa1.Nombre)
+            @Html.DisplayName("Nombre Empresa") 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Producto.Nombre)
+            @Html.DisplayName("Producto Comprado")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Producto1.Nombre)
+            @Html.DisplayName("Producto Sugerido")
         </th>
         <th></th>
     </tr>

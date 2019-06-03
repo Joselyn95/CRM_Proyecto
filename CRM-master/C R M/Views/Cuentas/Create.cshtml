@@ -25,7 +25,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Servicio_Empresa, "Servicio_Empresa", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Servicio_Empresa, "Servicio Empresa", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Servicio_Empresa", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Servicio_Empresa, "", new { @class = "text-danger" })
@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Fecha_Pago, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Fecha_Pago, "Fecha Pago",htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div id="a" class="input-group date" data-provide="datepicker">
                     @Html.EditorFor(model => model.Fecha_Pago, new { htmlAttributes = new { @class = "form-control" } })
@@ -43,7 +43,7 @@
             </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Monto_Abono, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Monto_Abono, "Monto Abono",htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Monto_Abono, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Monto_Abono, "", new { @class = "text-danger" })
@@ -51,7 +51,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Monto_Pendiente, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Monto_Pendiente,"Monto Pendiente", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Monto_Pendiente, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Monto_Pendiente, "", new { @class = "text-danger" })
@@ -59,7 +59,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Descripcion, "Descripción",htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
@@ -68,7 +68,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Crear" class="btn btn-default" />
             </div>
         </div>
     </div>

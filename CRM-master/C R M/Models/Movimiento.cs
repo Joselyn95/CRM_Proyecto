@@ -11,11 +11,14 @@ namespace C_R_M.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Movimiento
     {
         public int Id_Movimiento { get; set; }
         public string Tipo { get; set; }
+        [Required(ErrorMessage = "Ingrese el Monto")]
+        [RegularExpression(@"[0-9]{1,9}(\.[0-9]{0,2})?$", ErrorMessage = "Solamente se permiten números")]
         public Nullable<double> Monto { get; set; }
         public string Detalle { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }

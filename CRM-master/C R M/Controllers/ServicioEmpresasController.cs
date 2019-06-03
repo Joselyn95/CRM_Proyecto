@@ -15,10 +15,20 @@ namespace C_R_M.Controllers
         private CRMEntities db = new CRMEntities();
 
         // GET: ServicioEmpresas
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
+            
             var servicioEmpresa = db.ServicioEmpresa.Include(s => s.Empresa1).Include(s => s.Producto);
-            return View(servicioEmpresa.ToList());
+            List<ServicioEmpresa> listServicios = servicioEmpresa.ToList();
+
+            foreach (var item in servicioEmpresa)
+            {
+                if (item.Empresa != id)
+                {
+                    listServicios.Remove(item);
+                }
+            }
+            return View(listServicios);
         }
 
         // GET: ServicioEmpresas/Details/5
