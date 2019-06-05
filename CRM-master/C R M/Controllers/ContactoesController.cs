@@ -19,8 +19,6 @@ namespace C_R_M.Controllers
         {
             var contacto = db.Contacto.Include(c => c.Empresa1);
 
-            return View(contacto.ToList());
-
             List<Contacto> listContactos = contacto.ToList();
 
             foreach (var item in contacto)
