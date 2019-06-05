@@ -24,9 +24,13 @@ namespace C_R_M.Models
         }
     
         public int Id_Producto { get; set; }
+
         [Required(ErrorMessage = "Ingrese el nombre del producto")]
         public string Nombre { get; set; }
+
         public string Codigo { get; set; }
+
+        [Required(ErrorMessage = "Indique el tipo")]
         public string Tipo_Producto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

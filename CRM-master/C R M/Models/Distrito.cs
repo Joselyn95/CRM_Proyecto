@@ -11,7 +11,8 @@ namespace C_R_M.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Distrito
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,7 @@ namespace C_R_M.Models
         }
     
         public int Id_Distrito { get; set; }
+        [Required(ErrorMessage = "Indique el nomnre")]
         public string Nombre { get; set; }
         public int Canton { get; set; }
     

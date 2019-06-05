@@ -11,11 +11,16 @@ namespace C_R_M.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Cuenta
     {
         public int Id_Cuenta { get; set; }
+
+        [Required(ErrorMessage = "Indique la empresa")]
         public int Servicio_Empresa { get; set; }
+
+        [DataType(DataType.Date)]
         public System.DateTime Fecha_Pago { get; set; }
         public double Monto_Abono { get; set; }
         public Nullable<double> Monto_Pendiente { get; set; }

@@ -11,13 +11,21 @@ namespace C_R_M.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Marketing
     {
         public int Id_Marketing { get; set; }
+
+        [Required(ErrorMessage = "Indique el producto")]
         public int Id_Producto { get; set; }
+
+        [Required(ErrorMessage = "Indique la empresa")]
         public int Empresa { get; set; }
+
+        [Required(ErrorMessage = "Indique el producto a sugerir")]
         public int Sugerencia_Producto { get; set; }
+
         public string URL { get; set; }
     
         public virtual Empresa Empresa1 { get; set; }
