@@ -23,7 +23,7 @@ namespace C_R_M.Models
         }
     
         public int Id_Contacto { get; set; }
-        [RegularExpression(@"[a-zA-ZñÑ\s]")]
+
         [Required(ErrorMessage ="Ingrese el nombre del contacto")]        
         public string Nombre { get; set; }
 
