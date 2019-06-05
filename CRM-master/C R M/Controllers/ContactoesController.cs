@@ -18,7 +18,6 @@ namespace C_R_M.Controllers
         public ActionResult Index(int? id)
         {
             var contacto = db.Contacto.Include(c => c.Empresa1);
-
             List<Contacto> listContactos = contacto.ToList();
 
             foreach (var item in contacto)
@@ -29,7 +28,6 @@ namespace C_R_M.Controllers
                 }
             }
             return View(listContactos);
-
         }
 
         // GET: Contactoes/Details/5

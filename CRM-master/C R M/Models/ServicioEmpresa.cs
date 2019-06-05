@@ -27,7 +27,6 @@ namespace C_R_M.Models
         public int Id_Producto { get; set; }
 
         [Required(ErrorMessage = "Ingrese una descripción del servicio")]
-        [DataType(DataType.MultilineText)]
         public string Descripcion { get; set; }
 
         [Required(ErrorMessage = "Ingrese la Fecha de Creación")]

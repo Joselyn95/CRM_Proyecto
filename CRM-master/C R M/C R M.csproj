@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.3.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.3.1.0\build\Microsoft.Net.Compilers.props')" />
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -59,6 +60,7 @@
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -3324,89 +3326,6 @@
     <Content Include="Content\bower_components\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\bower_components\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\bower_components\font-awesome\HELP-US-OUT.txt" />
-    <Content Include="Content\bower_components\fullcalendar\dist\fullcalendar.css" />
-    <Content Include="Content\bower_components\fullcalendar\dist\fullcalendar.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\fullcalendar.min.css" />
-    <Content Include="Content\bower_components\fullcalendar\dist\fullcalendar.min.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\fullcalendar.print.css" />
-    <Content Include="Content\bower_components\fullcalendar\dist\fullcalendar.print.min.css" />
-    <Content Include="Content\bower_components\fullcalendar\dist\gcal.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\gcal.min.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale-all.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\af.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ar-dz.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ar-kw.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ar-ly.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ar-ma.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ar-sa.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ar-tn.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ar.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\be.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\bg.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\bs.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ca.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\cs.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\da.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\de-at.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\de-ch.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\de.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\el.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\en-au.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\en-ca.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\en-gb.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\en-ie.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\en-nz.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\es-do.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\es-us.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\es.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\et.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\eu.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\fa.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\fi.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\fr-ca.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\fr-ch.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\fr.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\gl.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\he.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\hi.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\hr.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\hu.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\id.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\is.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\it.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ja.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ka.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\kk.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ko.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\lb.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\lt.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\lv.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\mk.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ms-my.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ms.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\nb.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\nl-be.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\nl.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\nn.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\pl.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\pt-br.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\pt.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ro.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\ru.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\sk.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\sl.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\sq.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\sr-cyrl.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\sr.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\sv.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\th.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\tr.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\uk.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\vi.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\zh-cn.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\zh-hk.js" />
-    <Content Include="Content\bower_components\fullcalendar\dist\locale\zh-tw.js" />
-    <Content Include="Content\bower_components\fullcalendar\LICENSE.txt" />
     <Content Include="Content\bower_components\inputmask\dist\inputmask\bindings\inputmask.binding.js" />
     <Content Include="Content\bower_components\inputmask\dist\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
     <Content Include="Content\bower_components\inputmask\dist\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.js" />
@@ -6760,7 +6679,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Imagenes\PalmerCodes.png" />
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model.Context.cs</LastGenOutput>
@@ -7131,11 +7049,6 @@
     <Content Include="Content\bower_components\font-awesome\scss\_screen-reader.scss" />
     <Content Include="Content\bower_components\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\bower_components\font-awesome\scss\_variables.scss" />
-    <Content Include="Content\bower_components\fullcalendar\.bower.json" />
-    <Content Include="Content\bower_components\fullcalendar\bower.json" />
-    <Content Include="Content\bower_components\fullcalendar\CHANGELOG.md" />
-    <Content Include="Content\bower_components\fullcalendar\CONTRIBUTING.md" />
-    <Content Include="Content\bower_components\fullcalendar\README.md" />
     <Content Include="Content\bower_components\inputmask\.bower.json" />
     <Content Include="Content\bower_components\inputmask\bower.json" />
     <Content Include="Content\bower_components\ion.rangeSlider\.bower.json" />
@@ -7538,7 +7451,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Shared\_LayoutVacio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -7552,7 +7464,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Content\bower_components\fullcalendar\dist\fullcalendar.d.ts" />
     <TypeScriptCompile Include="Content\bower_components\moment\moment.d.ts" />
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
@@ -7589,8 +7500,9 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.3.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.3.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
