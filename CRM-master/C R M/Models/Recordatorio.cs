@@ -11,17 +11,32 @@ namespace C_R_M.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Recordatorio
     {
         public int Id_Recordatorio { get; set; }
         public string Tipo { get; set; }
+
+        [Required(ErrorMessage = "Indique la fecha")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Fecha { get; set; }
+
+        [Required(ErrorMessage = "Indique la hora")]
+        [Range(1, 24)]
         public Nullable<int> Hora { get; set; }
+
+        [Required(ErrorMessage = "Indique los minutos")]
+        [Range(0, 60)]
         public Nullable<int> Minutos { get; set; }
+
         public string Abreviatura { get; set; }
+
+        [DataType(DataType.MultilineText)]
         public string Detalle { get; set; }
+
         public Nullable<int> Empresa { get; set; }
+
         public int Id_Recordar { get; set; }
     
         public virtual Empresa Empresa1 { get; set; }

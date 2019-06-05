@@ -11,15 +11,28 @@ namespace C_R_M.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Publicidad
     {
         public int Id_Publicidad { get; set; }
+        [Required(ErrorMessage = "Indique el medio")]
         public Nullable<int> Medio { get; set; }
+
+        [Required(ErrorMessage = "Indique la empresa")]
         public Nullable<int> Empresa { get; set; }
+
         public Nullable<int> Credito_Disponible { get; set; }
+
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Indique la fecha de inicio")]
         public Nullable<System.DateTime> Fecha_Inicio { get; set; }
+
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Indique la fecha de caducidad")]
         public Nullable<System.DateTime> Fecha_Caducidad { get; set; }
+
+        [Required(ErrorMessage = "Indique el costo")]
         public Nullable<double> Costo { get; set; }
     
         public virtual Empresa Empresa1 { get; set; }

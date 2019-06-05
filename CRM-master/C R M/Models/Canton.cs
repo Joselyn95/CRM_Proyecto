@@ -11,7 +11,8 @@ namespace C_R_M.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Canton
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,7 +23,10 @@ namespace C_R_M.Models
         }
     
         public int Id_Canton { get; set; }
+
+        [Required(ErrorMessage = "Indique el nombre")]
         public string Nombre { get; set; }
+
         public Nullable<int> Provincia { get; set; }
     
         public virtual Provincia Provincia1 { get; set; }

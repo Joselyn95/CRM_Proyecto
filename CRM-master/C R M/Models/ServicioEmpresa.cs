@@ -27,14 +27,19 @@ namespace C_R_M.Models
         public int Id_Producto { get; set; }
 
         [Required(ErrorMessage = "Ingrese una descripción del servicio")]
+        [DataType(DataType.MultilineText)]
         public string Descripcion { get; set; }
 
         [Required(ErrorMessage = "Ingrese la Fecha de Creación")]
+        [DataType(DataType.Date)]
         public System.DateTime Fecha_Creacion { get; set; }
 
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Primer_Pago { get; set; }
 
+        [DataType(DataType.Date)]
         public System.DateTime Renovacion { get; set; }
+
         public int Empresa { get; set; }
 
         [RegularExpression(@"[0-9]{1,9}(\.[0-9]{0,2})?$")]
