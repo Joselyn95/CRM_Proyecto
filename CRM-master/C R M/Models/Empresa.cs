@@ -45,6 +45,8 @@ namespace C_R_M.Models
         public string Otras_Señas { get; set; }
 
         [RegularExpression(@"[0-9]{1,9}(\.[0-9]{0,2})?$",ErrorMessage ="Solamente se permiten números enteros")]
+        [MaxLength(6)]
+        [MinLength(4)]
         public int Codigo_Postal { get; set; }
     
         public virtual Canton Canton { get; set; }
