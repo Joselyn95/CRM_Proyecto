@@ -55,16 +55,17 @@
           <Key>
             <PropertyRef Name="Id_Empresa" />
           </Key>
-          <Property Name="Id_Empresa" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Empresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" />
           <Property Name="Correo" Type="varchar" MaxLength="100" />
           <Property Name="Cedula" Type="varchar" MaxLength="30" />
-          <Property Name="Pais" Type="varchar" MaxLength="100" />
+          <Property Name="Pais" Type="int" />
           <Property Name="Id_Provincia" Type="int" />
           <Property Name="Id_Canton" Type="int" />
           <Property Name="Id_Distrito" Type="int" />
           <Property Name="Otras_Señas" Type="varchar" MaxLength="300" Nullable="false" />
           <Property Name="Codigo_Postal" Type="int" Nullable="false" />
+          <Property Name="Tipo_Cedula" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="EstadodeCuenta">
           <Key>
@@ -100,6 +101,13 @@
           <Property Name="Monto" Type="float" />
           <Property Name="Detalle" Type="varchar" MaxLength="200" />
           <Property Name="Fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="Id_Pais" />
+          </Key>
+          <Property Name="Id_Pais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Producto">
           <Key>
@@ -273,6 +281,18 @@
             </Principal>
             <Dependent Role="Empresa">
               <PropertyRef Name="Id_Distrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empresa_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="Id_Pais" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="Pais" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -467,6 +487,7 @@
           <EntitySet Name="Marketing" EntityType="Self.Marketing" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MedioPublicitario" EntityType="Self.MedioPublicitario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Movimiento" EntityType="Self.Movimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Publicidad" EntityType="Self.Publicidad" Schema="dbo" store:Type="Tables" />
@@ -502,6 +523,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Empresa_Distrito" Association="Self.FK_Empresa_Distrito">
             <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empresa_Pais" Association="Self.FK_Empresa_Pais">
+            <End Role="Pais" EntitySet="Pais" />
             <End Role="Empresa" EntitySet="Empresa" />
           </AssociationSet>
           <AssociationSet Name="FK_Empresa_Provincia" Association="Self.FK_Empresa_Provincia">
@@ -633,7 +658,7 @@
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Pais" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Pais" Type="Int32" />
           <Property Name="Id_Provincia" Type="Int32" />
           <Property Name="Id_Canton" Type="Int32" />
           <Property Name="Id_Distrito" Type="Int32" />
@@ -649,6 +674,8 @@
           <NavigationProperty Name="Recordatorio" Relationship="Self.FK_Recordatorio_Empresa" FromRole="Empresa" ToRole="Recordatorio" />
           <NavigationProperty Name="ServicioEmpresa" Relationship="Self.FK_ServicioEmpresa_Empresa" FromRole="Empresa" ToRole="ServicioEmpresa" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Empresa" FromRole="Empresa" ToRole="Usuario" />
+          <Property Name="Tipo_Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pais1" Relationship="CRMModel.FK_Empresa_Pais" FromRole="Empresa" ToRole="Pais" />
         </EntityType>
         <EntityType Name="EstadodeCuenta">
           <Key>
@@ -1172,7 +1199,32 @@
             <End Role="Rol" EntitySet="Rol" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
+          <EntitySet Name="Pais" EntityType="CRMModel.Pais" />
+          <AssociationSet Name="FK_Empresa_Pais" Association="CRMModel.FK_Empresa_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="Id_Pais" />
+          </Key>
+          <Property Name="Id_Pais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Empresa" Relationship="CRMModel.FK_Empresa_Pais" FromRole="Pais" ToRole="Empresa" />
+        </EntityType>
+        <Association Name="FK_Empresa_Pais">
+          <End Type="CRMModel.Pais" Role="Pais" Multiplicity="0..1" />
+          <End Type="CRMModel.Empresa" Role="Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="Id_Pais" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1233,6 +1285,7 @@
           <EntitySetMapping Name="Empresa">
             <EntityTypeMapping TypeName="CRMModel.Empresa">
               <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="Tipo_Cedula" ColumnName="Tipo_Cedula" />
                 <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
@@ -1382,6 +1435,14 @@
                 <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
                 <ScalarProperty Name="Empresa" ColumnName="Empresa" />
                 <ScalarProperty Name="Rol" ColumnName="Rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="CRMModel.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
