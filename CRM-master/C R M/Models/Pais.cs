@@ -15,41 +15,27 @@ namespace C_R_M.Models
 using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
-    public partial class Canton
+    public partial class Pais
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Canton()
+    public Pais()
     {
-
-        this.Distrito = new HashSet<Distrito>();
 
         this.Empresa = new HashSet<Empresa>();
 
     }
 
 
-
-    public int Id_Canton { get; set; }
-        [Required(ErrorMessage = "Indique el nombre")]
-
+    public int Id_Pais { get; set; }
+        [Required(ErrorMessage = "Ingrese el nombre del Pais")]
         public string Nombre { get; set; }
 
-    public Nullable<int> Provincia { get; set; }
-
-
-
-    public virtual Provincia Provincia1 { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Distrito> Distrito { get; set; }
+   
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Empresa> Empresa { get; set; }
-
-}
+    }
 
 }

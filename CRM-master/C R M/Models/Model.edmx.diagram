@@ -46,6 +46,8 @@
         <AssociationConnector Association="CRMModel.FK_ServicioEmpresa_Producto" ManuallyRouted="false" />
         <AssociationConnector Association="CRMModel.FK_Recordatorio_Recordar" ManuallyRouted="false" />
         <AssociationConnector Association="CRMModel.FK_Usuario_Rol" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CRMModel.Pais" Width="1.5" PointX="4" PointY="7.875" />
+        <AssociationConnector Association="CRMModel.FK_Empresa_Pais" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
