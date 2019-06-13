@@ -51,7 +51,7 @@ namespace C_R_M.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id_Empresa,Nombre,Correo,Cedula,Pais,Id_Provincia,Id_Canton,Id_Distrito,Otras_Señas,Codigo_Postal")] Empresa empresa)
+        public ActionResult Create([Bind(Include = "Id_Empresa,Nombre,Correo,Tipo_Cedula,Cedula,Pais,Id_Provincia,Id_Canton,Id_Distrito,Otras_Señas,Codigo_Postal")] Empresa empresa)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace C_R_M.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id_Empresa,Nombre,Correo,Cedula,Pais,Id_Provincia,Id_Canton,Id_Distrito,Otras_Señas,Codigo_Postal")] Empresa empresa)
+        public ActionResult Edit([Bind(Include = "Id_Empresa,Nombre,Correo,Tipo_Cedula,Cedula,Pais,Id_Provincia,Id_Canton,Id_Distrito,Otras_Señas,Codigo_Postal")] Empresa empresa)
         {
             if (ModelState.IsValid)
             {

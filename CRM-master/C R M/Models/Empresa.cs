@@ -17,30 +17,30 @@ namespace C_R_M.Models
     using System.ComponentModel.DataAnnotations;
 
     public partial class Empresa
-{
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Empresa()
     {
 
-        this.Contacto = new HashSet<Contacto>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Empresa()
+        {
 
-        this.EstadodeCuenta = new HashSet<EstadodeCuenta>();
+            this.Contacto = new HashSet<Contacto>();
 
-        this.Marketing = new HashSet<Marketing>();
+            this.EstadodeCuenta = new HashSet<EstadodeCuenta>();
 
-        this.Publicidad = new HashSet<Publicidad>();
+            this.Marketing = new HashSet<Marketing>();
 
-        this.Recordatorio = new HashSet<Recordatorio>();
+            this.Publicidad = new HashSet<Publicidad>();
 
-        this.ServicioEmpresa = new HashSet<ServicioEmpresa>();
+            this.Recordatorio = new HashSet<Recordatorio>();
 
-        this.Usuario = new HashSet<Usuario>();
+            this.ServicioEmpresa = new HashSet<ServicioEmpresa>();
 
-    }
+            this.Usuario = new HashSet<Usuario>();
+
+        }
 
 
-    public int Id_Empresa { get; set; }
+        public int Id_Empresa { get; set; }
         [Required(ErrorMessage = "Ingrese el nombre de la empresa")]
         public string Nombre { get; set; }
 
@@ -48,66 +48,66 @@ namespace C_R_M.Models
         [DataType(DataType.EmailAddress)]
         public string Correo { get; set; }
 
-        [RegularExpression(@"[0-9]{1,9}(\.[0-9]{0,2})?$")]
+        [RegularExpression(@"[0-9]{1,9}(\.[0-9]{0,2})?$", ErrorMessage = "El largo de la cédula no es correcta")]
+        [Required(ErrorMessage = "Ingrese la cédula de la empresa")]
         public string Cedula { get; set; }
 
         [Required(ErrorMessage = "Ingrese el país de la empresa")]
         public Nullable<int> Pais { get; set; }
 
-    public Nullable<int> Id_Provincia { get; set; }
+        public Nullable<int> Id_Provincia { get; set; }
 
-    public Nullable<int> Id_Canton { get; set; }
+        public Nullable<int> Id_Canton { get; set; }
 
-    public Nullable<int> Id_Distrito { get; set; }
+        public Nullable<int> Id_Distrito { get; set; }
 
 
-    public string Otras_Señas { get; set; }
+        public string Otras_Señas { get; set; }
         [RegularExpression(@"[0-9]{1,9}(\.[0-9]{0,2})?$", ErrorMessage = "Solamente se permiten números enteros")]
 
-    public int Codigo_Postal { get; set; }
+        public int Codigo_Postal { get; set; }
+        [Required(ErrorMessage = "Seleccione el tipo de cédula")]
+        public string Tipo_Cedula { get; set; }
 
-    public string Tipo_Cedula { get; set; }
 
 
+        public virtual Canton Canton { get; set; }
 
-    public virtual Canton Canton { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Contacto> Contacto { get; set; }
 
-    public virtual ICollection<Contacto> Contacto { get; set; }
+        public virtual Distrito Distrito { get; set; }
 
-    public virtual Distrito Distrito { get; set; }
-
-    public virtual Provincia Provincia { get; set; }
+        public virtual Provincia Provincia { get; set; }
 
         public virtual Pais Pais1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<EstadodeCuenta> EstadodeCuenta { get; set; }
+        public virtual ICollection<EstadodeCuenta> EstadodeCuenta { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Marketing> Marketing { get; set; }
+        public virtual ICollection<Marketing> Marketing { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Publicidad> Publicidad { get; set; }
+        public virtual ICollection<Publicidad> Publicidad { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Recordatorio> Recordatorio { get; set; }
+        public virtual ICollection<Recordatorio> Recordatorio { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<ServicioEmpresa> ServicioEmpresa { get; set; }
+        public virtual ICollection<ServicioEmpresa> ServicioEmpresa { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Usuario> Usuario { get; set; }
+        public virtual ICollection<Usuario> Usuario { get; set; }
 
-    
 
-}
+    }
 
 }
