@@ -54,14 +54,14 @@ namespace C_R_M.Models
 
         [Required(ErrorMessage = "Ingrese el país de la empresa")]
         public Nullable<int> Pais { get; set; }
-
+        
         public Nullable<int> Id_Provincia { get; set; }
 
         public Nullable<int> Id_Canton { get; set; }
 
         public Nullable<int> Id_Distrito { get; set; }
 
-
+        [Required(ErrorMessage = "Ingrese el campo otras señas")]
         public string Otras_Señas { get; set; }
         [RegularExpression(@"[0-9]{1,9}(\.[0-9]{0,2})?$", ErrorMessage = "Solamente se permiten números enteros")]
 
