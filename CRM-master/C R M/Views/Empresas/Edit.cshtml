@@ -76,28 +76,28 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Pais1, "País", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("Pais", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("Pais", null, htmlAttributes: new { @class = "form-control", @id = "Id_Pais" })
                     @Html.ValidationMessageFor(model => model.Pais, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.Id_Provincia, "Provincia", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("Id_Provincia", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("Id_Provincia", null, htmlAttributes: new { @class = "form-control", @id = "Id_Provincia" })
                     @Html.ValidationMessageFor(model => model.Id_Provincia, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.Id_Canton, "Cantón", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("Id_Canton", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("Id_Canton", null, htmlAttributes: new { @class = "form-control", @id = "Id_Canton" })
                     @Html.ValidationMessageFor(model => model.Id_Canton, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.Id_Distrito, "Distrito", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("Id_Distrito", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("Id_Distrito", null, htmlAttributes: new { @class = "form-control", @id = "Id_Distrito" })
                     @Html.ValidationMessageFor(model => model.Id_Distrito, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -127,7 +127,7 @@
         </div>
     </div>
     <div id="menu1" class="tab-pane fade">
-        @Html.Action("index", "Contactoes", "")
+        @Html.Action("index", "Contactoes",  "")
     </div>
     <div id="menu2" class="tab-pane fade">
         @Html.Action("index", "ServicioEmpresas", "")
@@ -142,6 +142,24 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 <script type="text/javascript">
+
+    if ($("#Id_Pais").val() != 48) {
+        $("#Id_Provincia").prop("disabled", true);
+        $("#Id_Canton").prop("disabled", true);
+        $("#Id_Distrito").prop("disabled", true);
+        $("#Id_Provincia").empty();
+        $("#Id_Provincia").append('<option value="' + 1 + '">' + " " + '</option>');
+        $("#Id_Provincia").prop("disabled", true);
+
+        $("#Id_Distrito").empty();
+        $("#Id_Distrito").append('<option value="' + 1 + '">' + " " + '</option>');
+        $("#Id_Distrito").prop("disabled", true);
+
+        $("#Id_Canton").empty();
+        $("#Id_Canton").append('<option value="' + 1 + '">' + " " + '</option>');
+        $("#Id_Canton").prop("disabled", true);
+    } 
+
     function validar() {
         var selectedRadio = $(".cedul:checked").val();
         if (selectedRadio == 'Juridica') {
@@ -157,6 +175,98 @@
     $(".cedul").change(function () {
         validar();
     });
+
+    $("#Id_Provincia").change(function () {
+            $("#Id_Canton").empty();
+            $("#Id_Distrito").empty();
+            $("#Id_Canton").append('<option value="' + 0 + '">' + "--Seleccione canton--" + '</option>');
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("ListCantones")',
+
+                dataType: 'json',
+
+                data: { ID_PROVINCIA: $("#Id_Provincia").val() },
+                success: function (Cantones) {
+                    $.each(Cantones, function (i, catalogo) {
+                        $("#Id_Canton").append('<option value="' + catalogo.Value + '">' + catalogo.Text + '</option>');
+                       
+                    });
+                },
+                error: function (ex) {
+                    alert('Problema al cargar los cantones' + ex);
+                }
+            });
+            $("#Id_Canton").prop("disabled", false);
+            return false;
+        });
+
+        $("#Id_Canton").change(function () {
+            $("#Id_Distrito").empty();
+            $("#Id_Distrito").append('<option value="' + 0 + '">' + "--Seleccione distrito--" + '</option>');
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("ListDistritos")',
+
+                dataType: 'json',
+
+                data: { ID_CANTON: $("#Id_Canton").val() },
+                success: function (Distritos) {
+                    $.each(Distritos, function (i, catalogo) {
+                        $("#Id_Distrito").append('<option value="' + catalogo.Value + '">' + catalogo.Text + '</option>');
+                       
+                    });
+                },
+                error: function (ex) {
+                    alert('Problema al cargar los distritos' + ex);
+                }
+            });
+            $("#Id_Distrito").prop("disabled", false);
+            return false;
+        });
+
+        $("#Id_Pais").change(function () {
+            if ($("#Id_Pais").val() == 48) {
+                $("#Id_Provincia").empty();
+                $("#Id_Provincia").append('<option value="' + 0 + '">' + "--Seleccione una provincia--" + '</option>');
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ListProvincias")',
+
+                    dataType: 'json',
+
+                    data: { ID_PAIS: $("#Id_Pais").val() },
+                    success: function (Distritos) {
+                        $.each(Distritos, function (i, catalogo) {
+                            $("#Id_Provincia").append('<option value="' + catalogo.Value + '">' + catalogo.Text + '</option>');
+
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Problema al cargar los distritos' + ex);
+                    }
+                });
+                $("#Id_Provincia").prop("disabled", false);
+                return false;
+            } else {
+                //Limpia los campos
+                $("#Id_Provincia").empty();
+                $("#Id_Provincia").append('<option value="' + 1 + '">' + " " + '</option>');
+                $("#Id_Provincia").prop("disabled", true);
+
+                $("#Id_Distrito").empty();
+                $("#Id_Distrito").append('<option value="' + 1 + '">' + " " + '</option>');
+                $("#Id_Distrito").prop("disabled", true);
+
+                $("#Id_Canton").empty();
+                $("#Id_Canton").append('<option value="' + 1 + '">' + " " + '</option>');
+                $("#Id_Canton").prop("disabled", true);
+            }
+            
+        });
 
 </script>
 }
