@@ -1,0 +1,40 @@
+﻿
+@using ReportViewerForMvc
+@{
+    ViewBag.Title = "Reportes de Ventas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles{
+    @Styles.Render("~/Content/css-datatables")
+    <style>
+        iframe {
+            height: 350px;
+            width: 646px;
+        }
+        .content {
+            display: none;
+        }
+    </style>
+}
+<h2 class="display-1">Reportes de Ventas</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <br />
+        <div class="form-group">
+            @Html.Label("Seleccione un servicio", htmlAttributes: new { @class = "control-label col-sm-4" })
+            <div class="col-sm-4">
+                @Html.DropDownList("Id_Servicio_Empresa", (IEnumerable<SelectListItem>)ViewBag.Servicios, "Seleccione", new { @class = "form-control col-8" })
+            </div>
+            <div class="col-sm-4">
+                <input type="submit" value="Buscar" class="btn btn-success col-sm-4" />
+            </div>
+        </div>
+    </div>
+}
+
+<hr />
+<div class="text-center col-12">
+    @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, htmlAttributes: new { @class = "col-7" })
+</div>
