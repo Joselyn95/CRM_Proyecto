@@ -1,0 +1,184 @@
+﻿@model C_R_M.Models.Contacto
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int Contacto = Model.Id_Contacto;
+}
+
+<h2>Editar</h2>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Contacto</h4>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id_Contacto)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Apellido1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Apellido1, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Apellido1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Apellido2, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Apellido2, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Apellido2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Puesto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Puesto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Puesto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Id_Empresa, "Empresa", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Id_Empresa", (SelectList)ViewBag.Empresa, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Id_Empresa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="panel panel-default col-10 col-md-offset-1">
+                <div class="panel-heading">
+                    <dl class="dl-horizontal" style="margin-bottom: 0">
+                        <dt style="text-align: left;" class="h4">
+                            Correos
+                        </dt>
+
+                        <dd class="text-right">
+                            <i class="fa fa-plus-square btn btn-success fa-lg" onclick="agregarCorreo();" style="margin-top: 7px;"></i>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="panel-body" id="correos">
+                    <div id="correo0" class="col-12">
+                        @for (int i = 0; i < Model.Correo.Count; i++)
+                        {
+                            <div class="col-md-2">
+                                <label class="control-label" for="">@(i + 1)-Correo</label>
+                            </div>
+                            string ide = "Correo_" + i + "__Direccion";
+                            string namee = "Correo[" + i + "].Direccion";
+                            string valuee = Model.Correo.ToArray()[i].Direccion;
+                            <div class="col-md-6">
+                                <input class="form-control text-box single-line" id="@ide" name="@namee" placeholder="ejemplo@gmail.com" type="text" value="@valuee">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label" for="" style="height:45px;"></label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default col-10 col-md-offset-1">
+                <div class="panel-heading">
+                    <dl class="dl-horizontal" style="margin-bottom: 0">
+                        <dt style="text-align: left;" class="h4">
+                            Telefonos
+                        </dt>
+
+                        <dd class="text-right">
+                            <i class="fa fa-plus-square btn btn-success fa-lg" onclick="agregarTelefono();" style="margin-top: 7px;"></i>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="panel-body" id="telefonos">
+                    <div id="telefono0" class="col-12">
+                        @for (int i = 0; i < Model.Telefono.Count; i++)
+                        {
+                            <div class="col-md-2">
+                                <label class="control-label" for="">@(i + 1)-Telefono</label>
+                            </div>
+                            string idr = "Telefono_" + i + "__Codigo";
+                            string namer = "Telefono[" + i + "].Codigo";
+                            string valuer = Model.Telefono.ToArray()[i].Codigo;
+                            string idt = "Telefono_" + i + "__N_Telefonico";
+                            string namet = "Telefono[" + i + "].N_Telefonico";
+                            string valuet = Model.Telefono.ToArray()[i].N_Telefonico.ToString();
+                            <div class="col-md-3">
+                                <input class="form-control text-box single-line" id="@idr" name="@namer" placeholder="Codigo (506)" type="text" value="@valuer">
+                            </div>
+                            <div class="col-md-3">
+                                <input class="form-control text-box single-line" id="@idt" name="@namet" placeholder="Nº Telefonico" type="number" value="@valuet">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label" for="" style="height:45px;"></label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Actualizar" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div>
+    @Html.ActionLink("Volver a la lista", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    var indexcorreo = @Model.Correo.Count;
+    var indextelefono = @Model.Telefono.Count;
+    function agregarCorreo() {
+        $('#correos').append(`
+            <div id="correo`+ indexcorreo + `" class="col-12">
+                <div class="col-md-2">
+                    <label class="control-label" for="">`+ (indexcorreo + 1) + `-Correo</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control text-box single-line" id="Correo_`+ indexcorreo + `__Direccion" name="Correo[` + indexcorreo + `].Direccion" placeholder="ejemplo@gmail.com" type="text" value="">
+                </div>
+                <div class="col-md-3">
+                    <label class="control-label" for="" style="height:45px;"></label>
+                </div>
+            </div>
+        `);
+        indexcorreo++;
+    }
+    function agregarTelefono() {
+        $('#telefonos').append(`
+            <div id="telefono`+ indextelefono + `" class="col-12">
+                <div class="col-md-2">
+                    <label class="control-label" for="">`+ (indextelefono + 1) + `-Telefono</label>
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control text-box single-line" id="Telefono_`+ indextelefono + `__Codigo" name="Telefono[` + indextelefono + `].Codigo" placeholder="Codigo (506)" type="text" value="">
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control text-box single-line"  id="Telefono_`+ indextelefono + `__N_Telefonico" name="Telefono[` + indextelefono + `].N_Telefonico" placeholder="Nº Telefonico" type="number" value="">
+                </div>
+                <div class="col-md-3">
+                    <label class="control-label" for="" style="height:45px;"></label>
+                </div>
+            </div>
+        `);
+        indextelefono++;
+    }
+</script>

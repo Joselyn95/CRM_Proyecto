@@ -1,0 +1,41 @@
+﻿@model C_R_M.Models.EstadodeCuenta
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Borrar</h2>
+
+<h3>Estas seguro de eliminar este estado de cuenta?</h3>
+<div>
+    <h4>Estado de Cuenta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Credito_Disponible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Credito_Disponible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
+</div>

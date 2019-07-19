@@ -17,7 +17,7 @@ namespace C_R_M.Controllers
         // GET: Empresas
         public ActionResult Index()
         {
-            var empresa = db.Empresa.Include(e => e.Canton).Include(e => e.Distrito).Include(e => e.Provincia).Include(e => e.Pais1);
+            var empresa = db.Empresa.Include(e => e.Canton).Include(e => e.Distrito).Include(e => e.Provincia).Include(e => e.Pais1.Nombre);
             return View(empresa.ToList());
         }
 
