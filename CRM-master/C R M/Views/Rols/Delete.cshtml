@@ -1,0 +1,37 @@
+﻿@model C_R_M.Models.Rol
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="width: 100%;">
+    <h2>Eliminar Rol</h2>
+
+    <h3>Tu estas seguro de eliminar este Rol?</h3>
+    <div>
+        <hr />
+        <h4>Rol</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Borrar" class="btn btn-default" /> |
+                @Html.ActionLink("Volver", "Index")
+            </div>
+        }
+    </div>
+</div>

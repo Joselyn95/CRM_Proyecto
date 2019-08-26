@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.3.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.3.1.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -17,18 +16,19 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>C_R_M</RootNamespace>
     <AssemblyName>C R M</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,37 +49,57 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=18.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.18.1.1\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.5\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.WebForms.12.0.2402.15\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="ReportViewerForMvc, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReportViewerForMvc.1.1.1\lib\net45\ReportViewerForMvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -98,9 +118,7 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -118,6 +136,7 @@
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -131,24 +150,34 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ContactoesController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactosController.cs" />
     <Compile Include="Controllers\CorreosController.cs" />
     <Compile Include="Controllers\CuentasController.cs" />
+    <Compile Include="Controllers\CustomDateAttribute.cs" />
+    <Compile Include="Controllers\Email.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EstadodeCuentasController.cs" />
+    <Compile Include="Controllers\FrontUser.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MarketingsController.cs" />
-    <Compile Include="Controllers\MovimientoesController.cs" />
-    <Compile Include="Controllers\ProductoesController.cs" />
+    <Compile Include="Controllers\MedioPublicitariosController.cs" />
+    <Compile Include="Controllers\MovimientosController.cs" />
+    <Compile Include="Controllers\PermisoAttribute.cs" />
+    <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\PublicidadsController.cs" />
     <Compile Include="Controllers\RecordatoriosController.cs" />
-    <Compile Include="Controllers\RecordatorioshoyController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\RolsController.cs" />
+    <Compile Include="Controllers\Seguridad.cs" />
     <Compile Include="Controllers\ServicioEmpresasController.cs" />
-    <Compile Include="Controllers\TelefonoesController.cs" />
-    <Compile Include="Controllers\UsuariosController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
+    <Compile Include="Controllers\ServiciosContratadosController.cs" />
+    <Compile Include="Controllers\TelefonosController.cs" />
+    <Compile Include="CRMDataSetCuentas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRMDataSetCuentas.xsd</DependentUpon>
     </Compile>
     <Compile Include="Models\Canton.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -198,6 +227,12 @@
     <Compile Include="Models\Pais.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Permiso.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PermisoRol.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Producto.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -207,25 +242,46 @@
     <Compile Include="Models\Publicidad.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Recordar.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Recordatorio.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rol.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Servicio.cs" />
     <Compile Include="Models\ServicioEmpresa.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sugeridos.cs" />
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Telefono.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TipoConsulta.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AsigPermiso.cs" />
+    <Compile Include="Models\RolesPermisos.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\Modulo.cs" />
     <Compile Include="Models\Usuario.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\View_ReportCuentas.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -6394,6 +6450,12 @@
     <Content Include="Content\build\js\PushMenu.js" />
     <Content Include="Content\build\js\TodoList.js" />
     <Content Include="Content\build\js\Tree.js" />
+    <Content Include="Content\dataTables.bootstrap.min.css" />
+    <Content Include="Content\responsive.bootstrap.min.css" />
+    <Content Include="ReportViewerWebForm.aspx" />
+    <Content Include="Resources\Images\logo.jpg" />
+    <Content Include="Resources\Images\user.png" />
+    <Content Include="Scripts\dataTables.bootstrap4.min.js" />
     <Content Include="Content\Datepicker\css\bootstrap-datepicker.css" />
     <Content Include="Content\Datepicker\css\bootstrap-datepicker.min.css" />
     <Content Include="Content\Datepicker\css\bootstrap-datepicker.standalone.css" />
@@ -6537,6 +6599,8 @@
     <Content Include="Content\dist\js\demo.js" />
     <Content Include="Content\dist\js\pages\dashboard.js" />
     <Content Include="Content\dist\js\pages\dashboard2.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Content\Login.css" />
     <Content Include="Content\plugins\bootstrap-slider\bootstrap-slider.js" />
     <Content Include="Content\plugins\bootstrap-slider\slider.css" />
     <Content Include="Content\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.js" />
@@ -6679,26 +6743,9 @@
     <Content Include="Content\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="Content\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Content\plugins\timepicker\bootstrap-timepicker.min.js" />
-    <Content Include="favicon.ico" />
+    <Content Include="Scripts\favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
-    </Content>
-    <EntityDeploy Include="Models\Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\Datepicker\css\bootstrap-datepicker.css.map" />
     <Content Include="Content\Datepicker\css\bootstrap-datepicker.min.css.map" />
     <Content Include="Content\Datepicker\css\bootstrap-datepicker.standalone.css.map" />
@@ -6707,6 +6754,18 @@
     <Content Include="Content\Datepicker\css\bootstrap-datepicker3.min.css.map" />
     <Content Include="Content\Datepicker\css\bootstrap-datepicker3.standalone.css.map" />
     <Content Include="Content\Datepicker\css\bootstrap-datepicker3.standalone.min.css.map" />
+    <Content Include="Models\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+    <Content Include="Resources\Images\Log In.jpg" />
+    <Content Include="Resources\Images\what-crm-banner-img.svg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -7337,6 +7396,25 @@
     <Content Include="Content\dist\css\adminlte.min.css.map" />
     <Content Include="Content\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Content\plugins\input-mask\phone-codes\phone-codes.json" />
+    <EntityDeploy Include="Models\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Resources\Spanish.json" />
+    <Content Include="CRMDataSetCuentas.xsc">
+      <DependentUpon>CRMDataSetCuentas.xsd</DependentUpon>
+    </Content>
+    <None Include="CRMDataSetCuentas.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CRMDataSetCuentas.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="CRMDataSetCuentas.xss">
+      <DependentUpon>CRMDataSetCuentas.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -7359,6 +7437,19 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -7378,57 +7469,48 @@
     <Content Include="Views\Usuarios\Details.cshtml" />
     <Content Include="Views\Usuarios\Edit.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
-    <Content Include="Views\ServicioEmpresas\Create.cshtml" />
-    <Content Include="Views\ServicioEmpresas\Delete.cshtml" />
-    <Content Include="Views\ServicioEmpresas\Details.cshtml" />
-    <Content Include="Views\ServicioEmpresas\Edit.cshtml" />
-    <Content Include="Views\ServicioEmpresas\Index.cshtml" />
-    <Content Include="Views\Productoes\Create.cshtml" />
-    <Content Include="Views\Productoes\Delete.cshtml" />
-    <Content Include="Views\Productoes\Details.cshtml" />
-    <Content Include="Views\Productoes\Edit.cshtml" />
-    <Content Include="Views\Productoes\Index.cshtml" />
+    <Content Include="Views\Productos\Create.cshtml" />
+    <Content Include="Views\Productos\Delete.cshtml" />
+    <Content Include="Views\Productos\Details.cshtml" />
+    <Content Include="Views\Productos\Edit.cshtml" />
+    <Content Include="Views\Productos\Index.cshtml" />
     <Content Include="Views\EstadodeCuentas\Create.cshtml" />
     <Content Include="Views\EstadodeCuentas\Delete.cshtml" />
     <Content Include="Views\EstadodeCuentas\Details.cshtml" />
     <Content Include="Views\EstadodeCuentas\Edit.cshtml" />
     <Content Include="Views\EstadodeCuentas\Index.cshtml" />
-    <Content Include="Views\Marketings\Create.cshtml" />
-    <Content Include="Views\Marketings\Delete.cshtml" />
-    <Content Include="Views\Marketings\Details.cshtml" />
-    <Content Include="Views\Marketings\Edit.cshtml" />
     <Content Include="Views\Marketings\Index.cshtml" />
     <Content Include="Views\Publicidads\Create.cshtml" />
     <Content Include="Views\Publicidads\Delete.cshtml" />
     <Content Include="Views\Publicidads\Details.cshtml" />
     <Content Include="Views\Publicidads\Edit.cshtml" />
     <Content Include="Views\Publicidads\Index.cshtml" />
-    <Content Include="Views\Movimientoes\Create.cshtml" />
-    <Content Include="Views\Movimientoes\Delete.cshtml" />
-    <Content Include="Views\Movimientoes\Details.cshtml" />
-    <Content Include="Views\Movimientoes\Edit.cshtml" />
-    <Content Include="Views\Movimientoes\Index.cshtml" />
+    <Content Include="Views\Movimientos\Create.cshtml" />
+    <Content Include="Views\Movimientos\Delete.cshtml" />
+    <Content Include="Views\Movimientos\Details.cshtml" />
+    <Content Include="Views\Movimientos\Edit.cshtml" />
+    <Content Include="Views\Movimientos\Index.cshtml" />
     <Content Include="Views\Recordatorios\Create.cshtml" />
     <Content Include="Views\Recordatorios\Delete.cshtml" />
     <Content Include="Views\Recordatorios\Details.cshtml" />
     <Content Include="Views\Recordatorios\Edit.cshtml" />
     <Content Include="Views\Recordatorios\Index.cshtml" />
     <Content Include="Views\Test.cshtml" />
-    <Content Include="Views\Contactoes\Create.cshtml" />
-    <Content Include="Views\Contactoes\Delete.cshtml" />
-    <Content Include="Views\Contactoes\Details.cshtml" />
-    <Content Include="Views\Contactoes\Edit.cshtml" />
-    <Content Include="Views\Contactoes\Index.cshtml" />
+    <Content Include="Views\Contactos\Create.cshtml" />
+    <Content Include="Views\Contactos\Delete.cshtml" />
+    <Content Include="Views\Contactos\Details.cshtml" />
+    <Content Include="Views\Contactos\Edit.cshtml" />
+    <Content Include="Views\Contactos\Index.cshtml" />
     <Content Include="Views\Empresas\Create.cshtml" />
     <Content Include="Views\Empresas\Delete.cshtml" />
     <Content Include="Views\Empresas\Details.cshtml" />
     <Content Include="Views\Empresas\Edit.cshtml" />
     <Content Include="Views\Empresas\Index.cshtml" />
-    <Content Include="Views\Telefonoes\Create.cshtml" />
-    <Content Include="Views\Telefonoes\Delete.cshtml" />
-    <Content Include="Views\Telefonoes\Details.cshtml" />
-    <Content Include="Views\Telefonoes\Edit.cshtml" />
-    <Content Include="Views\Telefonoes\Index.cshtml" />
+    <Content Include="Views\Telefonos\Create.cshtml" />
+    <Content Include="Views\Telefonos\Delete.cshtml" />
+    <Content Include="Views\Telefonos\Details.cshtml" />
+    <Content Include="Views\Telefonos\Edit.cshtml" />
+    <Content Include="Views\Telefonos\Index.cshtml" />
     <Content Include="Views\Correos\Create.cshtml" />
     <Content Include="Views\Correos\Delete.cshtml" />
     <Content Include="Views\Correos\Details.cshtml" />
@@ -7440,11 +7522,6 @@
     <Content Include="Views\Cuentas\Edit.cshtml" />
     <Content Include="Views\Cuentas\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Recordatorioshoy\Create.cshtml" />
-    <Content Include="Views\Recordatorioshoy\Delete.cshtml" />
-    <Content Include="Views\Recordatorioshoy\Details.cshtml" />
-    <Content Include="Views\Recordatorioshoy\Edit.cshtml" />
-    <Content Include="Views\Recordatorioshoy\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -7455,13 +7532,41 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_LayoutVacio.cshtml" />
+    <Content Include="Views\Rols\Create.cshtml" />
+    <Content Include="Views\Rols\Delete.cshtml" />
+    <Content Include="Views\Rols\Details.cshtml" />
+    <Content Include="Views\Rols\Edit.cshtml" />
+    <Content Include="Views\Rols\Index.cshtml" />
+    <Content Include="Views\Rols\ViewPermiso.cshtml" />
+    <Content Include="Views\Rols\CreatePermiso.cshtml" />
+    <Content Include="Views\Recordatorios\RecordatoriosDia.cshtml" />
+    <Content Include="Views\ServiciosContratados\Details.cshtml" />
+    <Content Include="Views\ServiciosContratados\Index.cshtml" />
+    <Content Include="Views\ServicioEmpresas\Create.cshtml" />
+    <Content Include="Views\ServicioEmpresas\Delete.cshtml" />
+    <Content Include="Views\ServicioEmpresas\Details.cshtml" />
+    <Content Include="Views\ServicioEmpresas\Edit.cshtml" />
+    <Content Include="Views\ServicioEmpresas\Index.cshtml" />
+    <Content Include="Views\Shared\_Layouttable.cshtml" />
+    <Content Include="Views\Marketings\Details.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\MedioPublicitarios\Create.cshtml" />
+    <Content Include="Views\MedioPublicitarios\Delete.cshtml" />
+    <Content Include="Views\MedioPublicitarios\Details.cshtml" />
+    <Content Include="Views\MedioPublicitarios\Edit.cshtml" />
+    <Content Include="Views\MedioPublicitarios\Index.cshtml" />
+    <Content Include="Views\Empresas\ListContactos.cshtml" />
+    <Content Include="Views\Empresas\ListServicios.cshtml" />
+    <Content Include="Views\Empresas\ListEstadoCuentas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Reporte\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -7470,6 +7575,9 @@
   <ItemGroup>
     <TypeScriptCompile Include="Content\bower_components\moment\moment.d.ts" />
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\ReportVentas.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -7505,8 +7613,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.3.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.3.1.0\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

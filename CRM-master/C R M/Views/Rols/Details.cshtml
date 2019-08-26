@@ -1,0 +1,50 @@
+﻿@using C_R_M.Controllers
+@model C_R_M.Models.Rol
+
+@{
+    ViewBag.Title = "Mostrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container" style="width: 100%;">
+    <h2>Información del Rol</h2>
+
+    <div>
+        <hr />
+        @if (Model.PermisoRol.Count < 1)
+        {
+            <h4 class="font-weight-bold">El Rol @Model.Nombre no tiene ningún Permiso</h4>
+        }
+        else
+        {
+            <h4 class="font-weight-bold">El Rol @Model.Nombre tiene los Permisos</h4>
+        }
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayName("Modulos")
+                </th>
+                <th class="text-right" style="padding-right: 57px">
+                    @Html.DisplayName("Permisos")
+                </th>
+            </tr>
+
+            @foreach (var item in Model.PermisoRol)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modulo)
+                    </td>
+                    <td class="text-right">
+                        @RolsController.TipoPermiso(item)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Volver", "Index")
+    </p>
+</div>

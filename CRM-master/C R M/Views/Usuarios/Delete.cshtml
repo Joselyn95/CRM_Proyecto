@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Estas seguro de eliminar a este usuario?</h3>
 <div>
     <h4>Usuario</h4>
     <hr />
@@ -45,14 +45,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Contraseña)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Contraseña)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Fecha_Creacion)
         </dt>
 
@@ -61,19 +53,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Empresa1.Nombre)
+            @Html.DisplayName("Empresa")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Empresa1.Nombre)
+            @Html.DisplayFor(model => model.Empresa.Nombre)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Rol1.Nombre)
+            @Html.DisplayName("Rol")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Rol1.Nombre)
+            @Html.DisplayFor(model => model.Rol.Nombre)
         </dd>
 
     </dl>
