@@ -1,7 +1,7 @@
 ﻿@model C_R_M.Models.Empresa
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -36,11 +36,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Pais)
+            @Html.DisplayName("Pais")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Pais)
+            @Html.DisplayFor(model => model.Pais.Nombre)
         </dd>
 
         <dt>

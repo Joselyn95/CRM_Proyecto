@@ -1,20 +1,22 @@
 ﻿@model IEnumerable<C_R_M.Models.Cuenta>
-
+@using C_R_M.Models;
+@using C_R_M.Controllers;
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutVacio.cshtml";
+    ViewBag.Title = "Lista de Cuentas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int id_servicio = ViewBag.Servicio;
 }
 
 <h2>Cuentas</h2>
 
 <p>
-    @Html.ActionLink("Crear nuevo", "Create")
+    @if (FrontUser.TienePermiso("Cuentas", RolesPermisos.Crear_Registro))
+    {
+        <a href="@Url.Action("Create")/@id_servicio" class="btn btn-success"><i class="fa fa-plus-circle"></i> Crear Nuevo</a>
+    }
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayName("Servicio Empresa")
-        </th>
         <th>
             @Html.DisplayName("Fecha Pago")
         </th>
@@ -27,33 +29,58 @@
         <th>
             @Html.DisplayName("Descripción")
         </th>
+        <th>
+            @Html.DisplayName("Producto")
+        </th>
 
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ServicioEmpresa.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha_Pago)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Monto_Abono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Monto_Pendiente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id_Cuenta }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id_Cuenta }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id_Cuenta })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_Pago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto_Abono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto_Pendiente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServicioEmpresa.Producto.Nombre)
+            </td>
+            <td>
+                @if (FrontUser.TienePermiso("Cuentas", RolesPermisos.Visualizar_Registro))
+                {
+                    <a class="btn btn-info ml-1" href="@Url.Action("Details")/@item.Id_Cuenta?tipo=@ViewBag.Tipo"><i class="fa fa-info-circle"></i></a>
+                }
+                @if ((string)ViewBag.Volver == "ServicioEmpresas")
+                {
+                    if (FrontUser.TienePermiso("Cuentas", RolesPermisos.Editar_Registro))
+                    {
+                        <a class="btn btn-success ml-1" href="@Url.Action("Edit")/@item.Id_Cuenta"><i class="fa fa-edit  fa-lg"></i></a>
+                    }
+                    if (FrontUser.TienePermiso("Cuentas", RolesPermisos.Eliminar_Registro))
+                    {
+                        <a class="btn btn-danger ml-1" href="@Url.Action("Delete")/@item.Id_Cuenta"><i class="fa fa-trash fa-lg"></i></a>
+                    }
+                }
+            </td>
+        </tr>
+    }
 
 </table>
+<p>
+    @if (FrontUser.TienePermiso("Cuentas-Index", RolesPermisos.Permiso))
+    {
+        @Html.ActionLink("Volver", "Index", (string)ViewBag.Volver, null, null)
+    }
+</p>
+
+
+

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<C_R_M.Models.Producto>
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>Productos</h2>
+    <p>
+        <a href="@Url.Action("Create")" class="btn btn-success"><i class="fa fa-plus-circle"></i> Crear Nuevo</a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayName("Tipo")
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo_Producto)
+            </td>
+            <td>
+                <a class="btn btn-success ml-1" href="@Url.Action("Edit")/@item.Id_Producto"><i class="fa fa-edit  fa-lg"></i></a>
+                <a class="btn btn-info ml-1" href="@Url.Action("Details")/@item.Id_Producto"><i class="fa fa-info-circle"></i></a>
+                <a class="btn btn-danger ml-1" href="@Url.Action("Delete")/@item.Id_Producto"><i class="fa fa-trash fa-lg"></i></a>
+                @*@Html.ActionLink("Editar", "Edit", new { id = item.Id_Producto }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id_Producto }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.Id_Producto })*@
+            </td>
+        </tr>
+        }
+    </table>
+</body>
+</html>

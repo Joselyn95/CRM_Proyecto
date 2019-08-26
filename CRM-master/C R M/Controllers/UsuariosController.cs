@@ -8,23 +8,29 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using C_R_M.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace C_R_M.Controllers
 {
+    [PermisoAttribute]
     public class UsuariosController : Controller
     {
         private CRMEntities db = new CRMEntities();
-
         // GET: Usuarios
         public async Task<ActionResult> Index()
         {
-            var usuario = db.Usuario.Include(u => u.Empresa1).Include(u => u.Rol1);
+            if (AccountController.Account.GetUser == null)
+                return RedirectPermanent("Login/Index");
+            var usuario = db.Usuario.Include(u => u.Empresa).Include(u => u.Rol);
             return View(await usuario.ToListAsync());
         }
 
         // GET: Usuarios/Details/5
         public async Task<ActionResult> Details(int? id)
         {
+            if (AccountController.Account.GetUser == null)
+                return RedirectPermanent("Login/Index");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -40,9 +46,12 @@ namespace C_R_M.Controllers
         // GET: Usuarios/Create
         public ActionResult Create()
         {
+            if (AccountController.Account.GetUser == null)
+                return RedirectPermanent("Login/Index");
             ViewBag.Empresa = new SelectList(db.Empresa, "Id_Empresa", "Nombre");
-            ViewBag.Rol = new SelectList(db.Rol, "Id_Rol", "Nombre");
-            return View();
+            ViewBag.Rol = new SelectList(db.Rol, "Id", "Nombre");
+            Usuario usuario = new Usuario { Fecha_Creacion = DateTime.Now };
+            return View(usuario);
         }
 
         // POST: Usuarios/Create
@@ -50,24 +59,29 @@ namespace C_R_M.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id_Usuario,Nombre,Apellido1,Apellido2,Correo,Contraseña,Fecha_Creacion,Empresa,Rol")] Usuario usuario)
+        public async Task<ActionResult> Create([Bind(Include = "Id_Usuario,Nombre,Apellido1,Apellido2,Correo,Contraseña,Fecha_Creacion,Id_Empresa,Id_Rol")] Usuario usuario)
         {
+            if (AccountController.Account.GetUser == null)
+                return RedirectPermanent("Login/Index");
             if (ModelState.IsValid)
             {
+                usuario.Contraseña = Seguridad.Encripta(usuario.Contraseña);
                 usuario.Fecha_Creacion = DateTime.Now;
                 db.Usuario.Add(usuario);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Empresa = new SelectList(db.Empresa, "Id_Empresa", "Nombre", usuario.Empresa);
-            ViewBag.Rol = new SelectList(db.Rol, "Id_Rol", "Nombre", usuario.Rol);
+            ViewBag.Empresa = new SelectList(db.Empresa, "Id_Empresa", "Nombre", usuario.Id_Empresa);
+            ViewBag.Rol = new SelectList(db.Rol, "Id", "Nombre", usuario.Id_Rol);
             return View(usuario);
         }
 
         // GET: Usuarios/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
+            if (AccountController.Account.GetUser == null)
+                return RedirectPermanent("Login/Index");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -77,8 +91,9 @@ namespace C_R_M.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Empresa = new SelectList(db.Empresa, "Id_Empresa", "Nombre", usuario.Empresa);
-            ViewBag.Rol = new SelectList(db.Rol, "Id_Rol", "Nombre", usuario.Rol);
+            usuario.Contraseña = Seguridad.Desencripta(usuario.Contraseña);
+            ViewBag.Empresa = new SelectList(db.Empresa, "Id_Empresa", "Nombre", usuario.Id_Empresa);
+            ViewBag.Rol = new SelectList(db.Rol, "Id", "Nombre", usuario.Id_Rol);
             return View(usuario);
         }
 
@@ -87,23 +102,28 @@ namespace C_R_M.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id_Usuario,Nombre,Apellido1,Apellido2,Correo,Contraseña,Fecha_Creacion,Empresa,Rol")] Usuario usuario)
+        public async Task<ActionResult> Edit([Bind(Include = "Id_Usuario,Nombre,Apellido1,Apellido2,Correo,Contraseña,Fecha_Creacion,Id_Empresa,Id_Rol")] Usuario usuario)
         {
+            if (AccountController.Account.GetUser == null)
+                return RedirectPermanent("Login/Index");
             if (ModelState.IsValid)
             {
+                usuario.Contraseña = Seguridad.Encripta(usuario.Contraseña);
                 db.Usuario.Add(usuario);
                 db.Entry(usuario).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.Empresa = new SelectList(db.Empresa, "Id_Empresa", "Nombre", usuario.Empresa);
-            ViewBag.Rol = new SelectList(db.Rol, "Id_Rol", "Nombre", usuario.Rol);
+            ViewBag.Empresa = new SelectList(db.Empresa, "Id_Empresa", "Nombre", usuario.Id_Empresa);
+            ViewBag.Rol = new SelectList(db.Rol, "Id", "Nombre", usuario.Id_Rol);
             return View(usuario);
         }
 
         // GET: Usuarios/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
+            if (AccountController.Account.GetUser == null)
+                return RedirectPermanent("Login/Index");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -121,6 +141,8 @@ namespace C_R_M.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
+            if (AccountController.Account.GetUser == null)
+                return RedirectPermanent("Login/Index");
             Usuario usuario = await db.Usuario.FindAsync(id);
             db.Usuario.Remove(usuario);
             await db.SaveChangesAsync();
@@ -135,16 +157,6 @@ namespace C_R_M.Controllers
             }
             base.Dispose(disposing);
         }
-
-        public bool Logeo(string email,string contraseña)
-        {
-             var usuario = db.Usuario.Include(u => u.Empresa1).Include(u => u.Rol1);
-            var resultado = usuario.Where(x => x.Correo == email && x.Contraseña == contraseña).FirstOrDefault();
-            if (resultado != null)
-            {
-                return true;
-            }
-            return false;
-        }
+        
     }
 }
